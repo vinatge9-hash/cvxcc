@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>About Us | Cozy Beans Café</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#6f4e37', secondary: '#d2b48c' } } }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <nav class='fixed w-full bg-white shadow-md z-50' role='navigation' aria-label='Main'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Cozy Beans Café</div>
+        <div class='hidden md:flex space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='locations.html' class='hover:text-primary transition'>Locations</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-4 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='locations.html' class='block py-2 hover:text-primary'>Locations</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    const btn=document.getElementById('mobile-menu-btn');
+    const menu=document.getElementById('mobile-menu');
+    btn?.addEventListener('click',()=>{ menu?.classList.toggle('hidden'); });
+  </script>
+
+  <header class='pt-28 pb-12 bg-gradient-to-br from-primary to-secondary'>
+    <div class='container mx-auto px-6 text-center text-white'>
+      <h1 class='text-5xl font-bold mb-4'>A Place to Sip, Savor, and Stay Awhile</h1>
+      <p class='text-lg'>Our story begins with a simple belief: coffee can bring people together. Since day one, we’ve built a café that prioritizes people, planet, and palate.</p>
+    </div>
+  </header>
+
+  <main class='container mx-auto px-6 py-12'>
+    <section class='mb-12'>
+      <h2 class='text-3xl font-bold mb-4'>Our Story</h2>
+      <p class='text-gray-700'>Cozy Beans Café started as a tiny roastery with a big dream: to create a community hub where guests could slow down, connect, and enjoy honestly crafted coffee. We work directly with farms, roast in small batches, and celebrate every cup with care. Our baristas are artisans who treat each drink as a moment of hospitality.</p>
+    </section>
+    <section>
+      <h2 class='text-3xl font-bold mb-4'>Our Values</h2>
+      <ul class='list-disc pl-6 text-gray-700 space-y-2'>
+        <li>Quality first — every bean, every grind, every cup.</li>
+        <li>Sustainability — ethical sourcing, waste reduction, and thoughtful reuse.</li>
+        <li>Community — welcoming space for locals and visitors alike.</li>
+        <li>Craft — skilled baristas and thoughtful pairings with pastries.</li>
+      </ul>
+    </section>
+  </main>
+
+  <section class='py-8 bg-gray-100'>
+    <div class='container mx-auto px-6 text-center'>
+      <h3 class='text-2xl font-semibold'>Meet the Team</h3>
+      <p class='text-gray-700 mb-4'>A small, passionate crew committed to great coffee and warm smiles.</p>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=60' alt='Head roaster' class='w-full h-40 object-cover rounded' loading='lazy'>
+          <p class='font-semibold mt-2'>Alex Rivera — Head Roaster</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1520974732223-17fbb3d58fa9?auto=format&fit=crop&w=600&q=60' alt='Barista' class='w-full h-40 object-cover rounded' loading='lazy'>
+          <p class='font-semibold mt-2'>Mia Chen — Senior Barista</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1521847277035-3f5f4b1e7b0b?auto=format&fit=crop&w=600&q=60' alt='Founder' class='w-full h-40 object-cover rounded' loading='lazy'>
+          <p class='font-semibold mt-2'>Jamie Lee — Founder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class='bg-gray-900 text-white py-8'>
+    <div class='container mx-auto px-6 text-center'>
+      <p class='text-gray-400'>© 2024 Cozy Beans Café. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Locations | Cozy Beans Café</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#6f4e37', secondary: '#d2b48c' } } }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <nav class='fixed w-full bg-white shadow-md z-50' role='navigation' aria-label='Main'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Cozy Beans Café</div>
+        <div class='hidden md:flex space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='locations.html' class='hover:text-primary transition'>Locations</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-4 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='locations.html' class='block py-2 hover:text-primary'>Locations</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    const btn=document.getElementById('mobile-menu-btn');
+    const menu=document.getElementById('mobile-menu');
+    btn?.addEventListener('click',()=>{ menu?.classList.toggle('hidden'); });
+  </script>
+
+  <header class='pt-28 pb-8 bg-gradient-to-br from-primary to-secondary'>
+    <div class='container mx-auto px-6 text-center text-white'>
+      <h1 class='text-4xl font-bold'>Our Locations</h1>
+      <p class='mt-2'>Visit us at one of our cozy neighborhoods. We’ve got you covered across the city.</p>
+    </div>
+  </header>
+
+  <main class='container mx-auto px-6 py-12'>
+    <section class='mb-12'>
+      <div class='grid md:grid-cols-2 gap-8'>
+        <div class='bg-white rounded-lg shadow p-6'>
+          <h3 class='font-semibold text-xl mb-2'>Downtown — 123 Market St</h3>
+          <p class='text-gray-600'>Mon-Sun: 7:00 AM – 7:00 PM</p>
+          <p class='text-gray-600'>Phone: (555) 012-3456</p>
+          <a href='https://maps.google.com/?q=123+Market+St+Cityville' class='inline-block mt-3 text-primary'>Get directions</a>
+          <div class='mt-3'>
+            <iframe src='https://www.google.com/maps?q=Downtown+Cozy+Beans+Caf%C3%A9&output=embed' width='100%' height='260' style='border:0' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>
+          </div>
+        </div>
+        <div class='bg-white rounded-lg shadow p-6'>
+          <h3 class='font-semibold text-xl mb-2'>Riverside — 88 River Rd</h3>
+          <p class='text-gray-600'>Mon-Sun: 8:00 AM – 6:00 PM</p>
+          <p class='text-gray-600'>Phone: (555) 987-6543</p>
+          <a href='https://maps.google.com/?q=88+River+Rd+Cityville' class='inline-block mt-3 text-primary'>Get directions</a>
+          <div class='mt-3'>
+            <iframe src='https://www.google.com/maps?q=Riverside+Cozy+Beans+Café&output=embed' width='100%' height='260' style='border:0' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-gray-900 text-white py-6'>
+    <div class='container mx-auto px-6 text-center'>
+      <p class='text-gray-400'>© 2024 Cozy Beans Café. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

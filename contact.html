@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Contact Us | Cozy Beans Café</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#6f4e37', secondary: '#d2b48c' } } } }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <nav class='fixed w-full bg-white shadow-md z-50' role='navigation' aria-label='Main'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Cozy Beans Café</div>
+        <div class='hidden md:flex space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='locations.html' class='hover:text-primary transition'>Locations</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-4 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='locations.html' class='block py-2 hover:text-primary'>Locations</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    const btn=document.getElementById('mobile-menu-btn');
+    const menu=document.getElementById('mobile-menu');
+    btn?.addEventListener('click',()=>{ menu?.classList.toggle('hidden'); });
+  </script>
+
+  <header class='pt-28 pb-8 bg-gradient-to-br from-primary to-secondary'>
+    <div class='container mx-auto px-6 text-center text-white'>
+      <h1 class='text-4xl font-bold'>Get in Touch</h1>
+      <p class='mt-2'>We’d love to hear from you. Reach out with questions, feedback, or collaboration ideas.</p>
+    </div>
+  </header>
+
+  <main class='container mx-auto px-6 py-12'>
+    <section class='bg-white rounded-lg shadow p-6 mb-6'>
+      <form id='contact-form' class='space-y-4' aria-label='Contact form'>
+        <div>
+          <label class='block text-sm font-semibold mb-1'>Name</label>
+          <input type='text' required class='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary' aria-label='Your name'>
+        </div>
+        <div>
+          <label class='block text-sm font-semibold mb-1'>Email</label>
+          <input type='email' required class='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary' aria-label='Email'>
+        </div>
+        <div>
+          <label class='block text-sm font-semibold mb-1'>Message</label>
+          <textarea rows='5' required class='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary' aria-label='Message'></textarea>
+        </div>
+        <div class='flex items-center'>
+          <input id='newsletter' type='checkbox' class='h-4 w-4' aria-label='Sign up for newsletter'>
+          <label for='newsletter' class='ml-2 text-sm text-gray-700'>Sign me up for the Cozy Beans newsletter</label>
+        </div>
+        <button type='submit' class='w-full bg-primary text-white py-3 rounded-lg font-semibold'>Send Message</button>
+      </form>
+      <div id='form-message' class='hidden mt-4 p-4 rounded-lg' role='status'></div>
+    </section>
+    <section class='text-gray-700'>
+      <h3 class='text-xl font-semibold mb-2'>Visit Us</h3>
+      <p>Downtown: 123 Market St, Cityville • Open daily 7am–7pm</p>
+    </section>
+  </main>
+
+  <footer class='bg-gray-900 text-white py-8'>
+    <div class='container mx-auto px-6 text-center'>
+      <p class='text-gray-400'>© 2024 Cozy Beans Café. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('form-message');
+      msg.className = 'bg-green-100 text-green-800 p-4 rounded-lg';
+      msg.textContent = 'Thank you! Your message has been sent.';
+      msg.classList.remove('hidden');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

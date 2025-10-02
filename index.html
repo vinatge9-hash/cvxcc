@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Cozy Beans Café | Coffee & Community</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6f4e37',
+            secondary: '#d2b48c',
+            accent: '#cba15a'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <!-- LocalBusiness microdata -->
+  <div style='display:none' itemscope itemtype='http://schema.org/LocalBusiness'>
+    <span itemprop='name'>Cozy Beans Café</span>
+    <span itemprop='address'>123 Market St, Cityville</span>
+    <span itemprop='telephone'>(555) 012-3456</span>
+    <span itemprop='openingHours' content='Mo-Su 07:00-19:00'>Mo-Su 7am-7pm</span>
+    <link itemprop='url' href='https://www.cozybeans.cafe'/>
+    <span itemprop='priceRange'>$</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class='fixed w-full bg-white shadow-md z-50' role='navigation' aria-label='Main'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Cozy Beans Café</div>
+        <div class='hidden md:flex space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='locations.html' class='hover:text-primary transition'>Locations</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-4 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='locations.html' class='block py-2 hover:text-primary'>Locations</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => { menu?.classList.toggle('hidden'); });
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+  <!-- Hero -->
+  <section class='relative h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary'>
+    <img src='https://images.unsplash.com/photo-1509042239860-fd7b9a24d1f0?auto=format&fit=crop&w=1400&q=60' alt='Cup of coffee' class='absolute inset-0 w-full h-full object-cover opacity-40' loading='eager'>
+    <div class='relative z-10 text-center text-white px-6 animate-fadeIn'>
+      <h1 class='text-5xl md:text-7xl font-bold mb-6'>Brews, bites, and moments that linger</h1>
+      <p class='text-xl md:text-2xl mb-8 max-w-2xl mx-auto'>A neighborhood café serving single-origin coffees, fresh pastries, and warm conversations.</p>
+      <div class='space-x-4'>
+        <a href='menu.html' class='inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition'>View Menu</a>
+        <button id='order-now-btn' class='inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition' aria-label='Order online'>Order Online</button>
+      </div>
+    </div>
+    <!-- Order modal -->
+    <div id='order-modal' class='hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4' role='dialog' aria-label='Order modal'>
+      <div class='bg-white rounded-lg p-6 w-full max-w-md text-left text-black'>
+        <h2 class='text-2xl font-bold mb-4'>Online ordering coming soon</h2>
+        <p class='mb-4'>Join our waitlist and be notified when ordering goes live. We’ll keep you posted on new drinks and seasonal pastries.</p>
+        <form id='waitlist-form' class='space-y-4'>
+          <input type='email' placeholder='Email address' required class='w-full px-4 py-3 border rounded-md' aria-label='Email for waitlist'>
+          <button type='submit' class='w-full bg-primary text-white py-2 rounded-md'>Join Waitlist</button>
+        </form>
+        <button id='close-modal' class='mt-4 w-full bg-gray-200 text-gray-800 py-2 rounded-md'>Close</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const orderBtn = document.getElementById('order-now-btn');
+    const modal = document.getElementById('order-modal');
+    const closeBtn = document.getElementById('close-modal');
+    orderBtn?.addEventListener('click', () => { modal?.classList.remove('hidden'); });
+    closeBtn?.addEventListener('click', () => { modal?.classList.add('hidden'); });
+    document.getElementById('waitlist-form')?.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      alert('Thanks! We will contact ' + email + ' when ordering opens.');
+      modal?.classList.add('hidden');
+    });
+  </script>
+
+  <!-- Highlights -->
+  <section class='py-20'>
+    <div class='container mx-auto px-6 text-center'>
+      <h2 class='text-4xl font-bold mb-8'>What makes us special</h2>
+      <div class='grid md:grid-cols-3 gap-12'>
+        <div class='animate-fadeIn p-6'>
+          <div class='text-4xl mb-4'>☕</div>
+          <h3 class='text-xl font-semibold mb-2'>Single-origin coffee</h3>
+          <p class='text-gray-600'>We source direct from farms to bring you vibrant, nuanced flavors in every cup.</p>
+        </div>
+        <div class='animate-fadeIn p-6' style='animation-delay:0.1s'>
+          <div class='text-4xl mb-4'>🌿</div>
+          <h3 class='text-xl font-semibold mb-2'>Sustainable sourcing</h3>
+          <p class='text-gray-600'>Fair trade practices and transparent supply chains.</p>
+        </div>
+        <div class='animate-fadeIn p-6' style='animation-delay:0.2s'>
+          <div class='text-4xl mb-4'>✨</div>
+          <h3 class='text-xl font-semibold mb-2'>Barista-crafted drinks</h3>
+          <p class='text-gray-600'>Every cup is crafted with care by trained baristas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class='py-20 bg-gray-50'>
+    <div class='container mx-auto px-6'>
+      <h2 class='text-4xl font-bold text-center mb-10'>In Focus</h2>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <img src='https://images.unsplash.com/photo-1495474522012-356b9e3f8e57?auto=format&fit=crop&w=900&q=60' alt='Espresso shot' class='rounded-lg w-full h-48 object-cover' loading='lazy'>
+        <img src='https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=60' alt='Latte art' class='rounded-lg w-full h-48 object-cover' loading='lazy'>
+        <img src='https://images.unsplash.com/photo-1501183638710-3e05d1bf29e7?auto=format&fit=crop&w=900&q=60' alt='Pastry' class='rounded-lg w-full h-48 object-cover' loading='lazy'>
+      </div>
+    </div>
+  </section>
+
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <div class='grid md:grid-cols-4 gap-8'>
+        <div>
+          <h3 class='text-xl font-bold mb-4'>Cozy Beans Café</h3>
+          <p class='text-gray-400'>Where coffee meets community.</p>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Hours</h4>
+          <p class='text-gray-400'>Mon-Sun: 7:00 AM – 7:00 PM</p>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Location</h4>
+          <p class='text-gray-400'>123 Market St, Cityville</p>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Follow</h4>
+          <div class='flex space-x-4'>
+            <a href='#' class='text-gray-400 hover:text-white'>IG</a>
+            <a href='#' class='text-gray-400 hover:text-white'>FB</a>
+            <a href='#' class='text-gray-400 hover:text-white'>TW</a>
+          </div>
+        </div>
+      </div>
+      <div class='border-t border-gray-800 mt-8 pt-8 text-center text-gray-400'>
+        <p>&copy; 2024 Cozy Beans Café. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

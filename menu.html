@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Menu | Cozy Beans Café</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#6f4e37', secondary: '#d2b48c', accent: '#cba15a' }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <div style='display:none' itemscope itemtype='http://schema.org/LocalBusiness'>
+    <span itemprop='name'>Cozy Beans Café</span>
+    <span itemprop='address'>123 Market St, Cityville</span>
+    <span itemprop='telephone'>(555) 012-3456</span>
+    <span itemprop='openingHours' content='Mo-Su 07:00-19:00'>Mo-Su 7am-7pm</span>
+    <link itemprop='url' href='https://www.cozybeans.cafe'/>
+    <span itemprop='priceRange'>$</span>
+  </div>
+
+  <nav class='fixed w-full bg-white shadow-md z-50' role='navigation' aria-label='Main'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Cozy Beans Café</div>
+        <div class='hidden md:flex space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='locations.html' class='hover:text-primary transition'>Locations</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-4 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='locations.html' class='block py-2 hover:text-primary'>Locations</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const btn=document.getElementById('mobile-menu-btn');
+    const menu=document.getElementById('mobile-menu');
+    btn?.addEventListener('click',()=>{ menu?.classList.toggle('hidden'); });
+  </script>
+
+  <!-- Hero -->
+  <section class='pt-24 pb-12'>
+    <div class='container mx-auto px-6'>
+      <h1 class='text-4xl md:text-5xl font-bold text-center text-primary mb-6'>Our Menu</h1>
+      <p class='text-center text-gray-600 mb-12'>Curated coffee drinks, cold brews, and handmade pastries crafted daily.</p>
+    </div>
+  </section>
+
+  <section id='hot' class='py-10'>
+    <div class='container mx-auto px-6'>
+      <h2 class='text-2xl font-bold mb-4'>Hot Drinks</h2>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=60' alt='Espresso' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Espresso</span>
+            <span class='text-gray-600'>$3.50</span>
+          </div>
+          <p class='text-sm text-gray-600'>Ristretto shot with rich crema.</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1639675871520-89d6a0e0f7c0?auto=format&fit=crop&w=900&q=60' alt='Cappuccino' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Cappuccino</span>
+            <span class='text-gray-600'>$4.25</span>
+          </div>
+          <p class='text-sm text-gray-600'>Equal parts espresso, steamed milk, and foam.</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=60' alt='Latte' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Latte</span>
+            <span class='text-gray-600'>$4.75</span>
+          </div>
+          <p class='text-sm text-gray-600'>Creamy milk and balanced espresso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='cold' class='py-10 bg-gray-50'>
+    <div class='container mx-auto px-6'>
+      <h2 class='text-2xl font-bold mb-4'>Cold Drinks</h2>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1526312426976-593c2d1b7b0e?auto=format&fit=crop&w=900&q=60' alt='Cold Brew' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Cold Brew</span>
+            <span class='text-gray-600'>$4.25</span>
+          </div>
+          <p class='text-sm text-gray-600'>Smooth iced coffee, served over ice.</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=60' alt='Iced Latte' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Iced Latte</span>
+            <span class='text-gray-600'>$4.50</span>
+          </div>
+          <p class='text-sm text-gray-600'>Chilled milk with espresso on ice.</p>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1603415526960-f8f5f9a16b74?auto=format&fit=crop&w=900&q=60' alt='Affogato' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Affogato</span>
+            <span class='text-gray-600'>$5.25</span>
+          </div>
+          <p class='text-sm text-gray-600'>Vanilla gelato with hot espresso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='pastries' class='py-10'>
+    <div class='container mx-auto px-6'>
+      <h2 class='text-2xl font-bold mb-4'>Pastries</h2>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1546069901-eacef0df6022?auto=format&fit=crop&w=900&q=60' alt='Croissant' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Butter Croissant</span>
+            <span class='text-gray-600'>$3.50</span>
+          </div>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1526312426976-593c2d1b7b0e?auto=format&fit=crop&w=900&q=60' alt='Blueberry Muffin' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Blueberry Muffin</span>
+            <span class='text-gray-600'>$3.75</span>
+          </div>
+        </div>
+        <div class='bg-white p-4 rounded-lg shadow'>
+          <img src='https://images.unsplash.com/photo-1499636136210-6f4e6b73a54d?auto=format&fit=crop&w=900&q=60' alt='Cookie' class='rounded mb-2 w-full h-40 object-cover' loading='lazy'>
+          <div class='flex justify-between items-center'>
+            <span class='font-semibold'>Chocolate Chip Cookie</span>
+            <span class='text-gray-600'>$2.95</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <div class='border-t border-gray-800 pt-6 text-center text-gray-400'>
+        <p>&copy; 2024 Cozy Beans Café. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
